@@ -1,0 +1,1 @@
+{"DATE_SK": "int64", "FULL_DATE": "date", "DAY_NAME": "str", "DAY_OF_WEEK": "int64", "MONTH_NAME": "str", "YEAR": "int64", "IS_WEEKEND": "bool"}

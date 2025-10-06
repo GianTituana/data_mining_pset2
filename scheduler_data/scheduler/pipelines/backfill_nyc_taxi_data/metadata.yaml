@@ -1,0 +1,305 @@
+blocks:
+- all_upstream_blocks_executed: true
+  color: null
+  configuration:
+    file_path: data_loaders/ingest_data.py
+    file_source:
+      path: data_loaders/ingest_data.py
+  downstream_blocks:
+  - dbt/demo/models/staging/stg_yellow
+  - dbt/demo/models/staging/stg_green
+  - dbt/demo/models/marts/dim_date
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: ingest_data
+  retry_config: null
+  status: updated
+  timeout: null
+  type: data_loader
+  upstream_blocks: []
+  uuid: ingest_data
+- all_upstream_blocks_executed: false
+  color: null
+  configuration:
+    dbt_project_name: dbt/demo
+    file_path: dbt/demo/models/staging/stg_yellow.sql
+    file_source:
+      path: dbt/demo/models/staging/stg_yellow.sql
+      project_path: dbt/demo
+    limit: 1000
+  downstream_blocks:
+  - dbt/demo/models/staging/stg_trips
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: sql
+  name: dbt/demo/models/staging/stg_yellow
+  retry_config: null
+  status: not_executed
+  timeout: null
+  type: dbt
+  upstream_blocks:
+  - ingest_data
+  uuid: dbt/demo/models/staging/stg_yellow
+- all_upstream_blocks_executed: false
+  color: null
+  configuration:
+    dbt_project_name: dbt/demo
+    file_path: dbt/demo/models/staging/stg_green.sql
+    file_source:
+      path: dbt/demo/models/staging/stg_green.sql
+      project_path: dbt/demo
+    limit: 1000
+  downstream_blocks:
+  - dbt/demo/models/staging/stg_trips
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: sql
+  name: dbt/demo/models/staging/stg_green
+  retry_config: null
+  status: executed
+  timeout: null
+  type: dbt
+  upstream_blocks:
+  - ingest_data
+  uuid: dbt/demo/models/staging/stg_green
+- all_upstream_blocks_executed: false
+  color: null
+  configuration:
+    dbt_project_name: dbt/demo
+    file_path: dbt/demo/models/staging/stg_trips.sql
+    file_source:
+      path: dbt/demo/models/staging/stg_trips.sql
+      project_path: dbt/demo
+  downstream_blocks:
+  - dbt/demo/models/staging/stg_enriched
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: sql
+  name: dbt/demo/models/staging/stg_trips
+  retry_config: null
+  status: executed
+  timeout: null
+  type: dbt
+  upstream_blocks:
+  - dbt/demo/models/staging/stg_yellow
+  - dbt/demo/models/staging/stg_green
+  uuid: dbt/demo/models/staging/stg_trips
+- all_upstream_blocks_executed: false
+  color: null
+  configuration:
+    dbt_project_name: dbt/demo
+    file_path: dbt/demo/models/staging/stg_enriched.sql
+    file_source:
+      path: dbt/demo/models/staging/stg_enriched.sql
+      project_path: dbt/demo
+    limit: 1000
+  downstream_blocks:
+  - dbt/demo/models/marts/dim_service_type
+  - dbt/demo/models/marts/dim_rate_code
+  - dbt/demo/models/marts/dim_payment_type
+  - dbt/demo/models/marts/fct_trips
+  - dbt/demo/models/marts/dim_vendor
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: sql
+  name: dbt/demo/models/staging/stg_enriched
+  retry_config: null
+  status: executed
+  timeout: null
+  type: dbt
+  upstream_blocks:
+  - dbt/demo/models/staging/stg_trips
+  uuid: dbt/demo/models/staging/stg_enriched
+- all_upstream_blocks_executed: false
+  color: null
+  configuration:
+    dbt_project_name: dbt/demo
+    file_path: dbt/demo/models/marts/dim_date.sql
+    file_source:
+      path: dbt/demo/models/marts/dim_date.sql
+      project_path: dbt/demo
+    limit: 1000
+  downstream_blocks:
+  - dbt/demo/models/marts/fct_trips
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: sql
+  name: dbt/demo/models/marts/dim_date
+  retry_config: null
+  status: executed
+  timeout: null
+  type: dbt
+  upstream_blocks:
+  - ingest_data
+  uuid: dbt/demo/models/marts/dim_date
+- all_upstream_blocks_executed: false
+  color: null
+  configuration:
+    dbt_project_name: dbt/demo
+    file_path: dbt/demo/models/marts/dim_payment_type.sql
+    file_source:
+      path: dbt/demo/models/marts/dim_payment_type.sql
+      project_path: dbt/demo
+    limit: 1000
+  downstream_blocks:
+  - dbt/demo/models/marts/fct_trips
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: sql
+  name: dbt/demo/models/marts/dim_payment_type
+  retry_config: null
+  status: executed
+  timeout: null
+  type: dbt
+  upstream_blocks:
+  - dbt/demo/models/staging/stg_enriched
+  uuid: dbt/demo/models/marts/dim_payment_type
+- all_upstream_blocks_executed: false
+  color: null
+  configuration:
+    dbt_project_name: dbt/demo
+    file_path: dbt/demo/models/marts/dim_rate_code.sql
+    file_source:
+      path: dbt/demo/models/marts/dim_rate_code.sql
+      project_path: dbt/demo
+    limit: 1000
+  downstream_blocks:
+  - dbt/demo/models/marts/fct_trips
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: sql
+  name: dbt/demo/models/marts/dim_rate_code
+  retry_config: null
+  status: executed
+  timeout: null
+  type: dbt
+  upstream_blocks:
+  - dbt/demo/models/staging/stg_enriched
+  uuid: dbt/demo/models/marts/dim_rate_code
+- all_upstream_blocks_executed: false
+  color: null
+  configuration:
+    dbt_project_name: dbt/demo
+    file_path: dbt/demo/models/marts/dim_service_type.sql
+    file_source:
+      path: dbt/demo/models/marts/dim_service_type.sql
+      project_path: dbt/demo
+    limit: 1000
+  downstream_blocks:
+  - dbt/demo/models/marts/fct_trips
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: sql
+  name: dbt/demo/models/marts/dim_service_type
+  retry_config: null
+  status: executed
+  timeout: null
+  type: dbt
+  upstream_blocks:
+  - dbt/demo/models/staging/stg_enriched
+  uuid: dbt/demo/models/marts/dim_service_type
+- all_upstream_blocks_executed: false
+  color: null
+  configuration:
+    dbt_project_name: dbt/demo
+    file_path: dbt/demo/models/marts/dim_vendor.sql
+    file_source:
+      path: dbt/demo/models/marts/dim_vendor.sql
+      project_path: dbt/demo
+    limit: 1000
+  downstream_blocks:
+  - dbt/demo/models/marts/fct_trips
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: sql
+  name: dbt/demo/models/marts/dim_vendor
+  retry_config: null
+  status: executed
+  timeout: null
+  type: dbt
+  upstream_blocks:
+  - dbt/demo/models/staging/stg_enriched
+  uuid: dbt/demo/models/marts/dim_vendor
+- all_upstream_blocks_executed: true
+  color: null
+  configuration:
+    dbt_project_name: dbt/demo
+    file_path: dbt/demo/models/marts/dim_zone.sql
+    file_source:
+      path: dbt/demo/models/marts/dim_zone.sql
+      project_path: dbt/demo
+    limit: 1000
+  downstream_blocks: []
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: sql
+  name: dbt/demo/models/marts/dim_zone
+  retry_config: null
+  status: executed
+  timeout: null
+  type: dbt
+  upstream_blocks: []
+  uuid: dbt/demo/models/marts/dim_zone
+- all_upstream_blocks_executed: false
+  color: null
+  configuration:
+    dbt_project_name: dbt/demo
+    file_path: dbt/demo/models/marts/fct_trips.sql
+    file_source:
+      path: dbt/demo/models/marts/fct_trips.sql
+      project_path: dbt/demo
+    limit: 1000
+  downstream_blocks: []
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: sql
+  name: dbt/demo/models/marts/fct_trips
+  retry_config: null
+  status: executed
+  timeout: null
+  type: dbt
+  upstream_blocks:
+  - dbt/demo/models/marts/dim_service_type
+  - dbt/demo/models/marts/dim_rate_code
+  - dbt/demo/models/marts/dim_payment_type
+  - dbt/demo/models/marts/dim_vendor
+  - dbt/demo/models/staging/stg_enriched
+  - dbt/demo/models/marts/dim_date
+  uuid: dbt/demo/models/marts/fct_trips
+cache_block_output_in_memory: false
+callbacks: []
+concurrency_config: {}
+conditionals: []
+created_at: '2025-09-25 16:30:12.578109+00:00'
+data_integration: null
+description: null
+executor_config: {}
+executor_count: 1
+executor_type: null
+extensions: {}
+name: backfill_nyc_taxi_data
+notification_config: {}
+remote_variables_dir: null
+retry_config: {}
+run_pipeline_in_one_process: false
+settings:
+  triggers: null
+spark_config: {}
+tags: []
+type: python
+uuid: backfill_nyc_taxi_data
+variables_dir: /home/src/mage_data/scheduler
+widgets: []

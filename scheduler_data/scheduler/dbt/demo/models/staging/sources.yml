@@ -1,0 +1,13 @@
+version: 2
+
+sources:
+  - name: bronze  # Nombre lógico del esquema de origen en dbt
+    database: NY_TAXI  # Opcional si ya está en el profile
+    schema: BRONZE  # Esquema en Snowflake donde están las tablas crudas
+    tables:
+      - name: yellow_tripdata
+        description: "Datos de viajes de taxis Yellow"
+      - name: green_tripdata
+        description: "Datos de viajes de taxis Green"
+      - name: taxi_zones
+        description: "Tabla de zonas de taxi con borough y zona"

@@ -1,0 +1,14 @@
+sources:
+- description: Dataframes Mage upstream blocks
+  loader: mage
+  name: mage_demo
+  schema: SILVER
+  tables:
+  - description: Dataframe for block `ingest_data` of the `backfill_nyc_taxi_data`
+      mage pipeline.
+    identifier: mage_backfill_nyc_taxi_data_ingest_data
+    meta:
+      block_uuid: ingest_data
+      pipeline_uuid: backfill_nyc_taxi_data
+    name: backfill_nyc_taxi_data_ingest_data
+version: 2
