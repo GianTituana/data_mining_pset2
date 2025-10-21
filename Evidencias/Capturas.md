@@ -1,8 +1,8 @@
-# Evidencias del Proyecto
+# Evidencias del Proyecto d
 
 ## 1. Secrets / Roles
 *Descripción:* Capturas que muestran la gestión de secretos y roles de acceso, con valores ocultos por seguridad.
-
+d
 ![alt text](image.png)
 
 ![alt text](image-12.png)
